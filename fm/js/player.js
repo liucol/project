@@ -66,9 +66,10 @@ var player = {
         $(".icon-yinliang").on("click",function(){
             $(".vol-ct").fadeToggle(500);
         })
-        $this.typeMenu.on("click","li",function() {
+        $this.typeMenu.on("click","li",function() {//选频道
             $(this).addClass("active").siblings().removeClass("active");
             curId = $(this).attr("data-id");
+            $this.playing = false;
             $this.getSong(curId);
         });
         $('.time-outline').on('click',function(e){  //  点击 调节播放进度
@@ -83,8 +84,9 @@ var player = {
             $this.volume =(e.pageX-$(this).offset().left)/150;
             $('#frame').contents().find('#player')[0].volume=$this.volume;
         });
-        $(".icon-kuaijin").on("click",function(){
+        $(".icon-kuaijin").on("click",function(){//下一曲
             var curId = $this.typeMenu.find(".active").attr("data-id");
+            $this.playing = false;
             $this.getSong(curId);
         });
         $(".icon-gantanhao").on("mouseover",function(){
