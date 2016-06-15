@@ -65,9 +65,7 @@ a {
   height: 422px;
   overflow: hidden;
   position: relative;
-  /*
-    display:none;*/
-
+  display: none;
 }
 .play-ct {
   margin-top: 10px;

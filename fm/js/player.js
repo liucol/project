@@ -7,10 +7,10 @@ var player = {
     init : function($node){
         this.linkCss();
         this.createPlayer();
-        this.player= $node;
         this.curId = null;
         this.lyricArr=[];
         this.data = [];
+        this.playing = false;
         this.currentTime = null;
         this.ctLyric =  $(".lyric");
         this.typeMenu = $('.fm-type');
@@ -114,6 +114,7 @@ var player = {
                 //console.log(song);
                 var songData=JSON.parse(song);
                 //console.log(songData)
+                if($this.playing) return;
                 for(var i in songData.song){
                     // console.log(songData.song)
                     $this.data = [songData.song[i].ssid,songData.song[i].sid];
@@ -126,6 +127,7 @@ var player = {
             })
     },
     startPlay: function() {     // 开始播放
+        this.playing = true;
         $('#frame').contents().find('#player')[0].play();
         this.progress();
     },
@@ -143,6 +145,12 @@ var player = {
             $(".curTime").text($this.formatTime(cur));
             $(".durTime").text($this.formatTime(dur));
             $this.setVal(cur,dur);
+            if(cur >= dur){
+                $this.playing = false;
+                if(!$this.playing){
+                    $this.getSong($this.curId);
+                }
+            }
         });
         $this.postLyric();
     },
@@ -220,7 +228,7 @@ var player = {
             if ((curTime > curT) && (curT < nexT)){//当前时间在下一句时间和歌曲当前时间之间的时候 就渲染 并滚动
                 $(".lyric li").removeClass("active");
                 $(".lyric li").eq(i).addClass("active");
-                $this.ctLyric.css('top', -liH*i);
+                $this.ctLyric.css('top', -liH*(i-2));
             }
         }
 
