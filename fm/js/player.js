@@ -19,7 +19,7 @@ var player = {
         this.getChannels();
     },
     linkCss : function(){
-        var  link= '<link rel="stylesheet" href="css/index.css">';
+        var  link= '<link rel="stylesheet" href="style/index.style">';
         $("head").append(link);
     },
     createPlayer: function(){
