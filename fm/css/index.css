@@ -65,9 +65,7 @@ a {
   height: 422px;
   overflow: hidden;
   position: relative;
-  /*
-    display:none;*/
-
+  display: none;
 }
 .play-ct {
   margin-top: 10px;
@@ -142,7 +140,9 @@ a {
   border: 1px solid #999;
   z-index: 100;
   border-radius: 5px;
-  background: linear-gradient(#aa9f89, #796a55, #342e25);
+  background: linear-gradient(-45deg, rgba(220, 161, 83, 0.5), rgba(217, 157, 97, 0.5) 25%, rgba(217, 157, 97, 0.5) 25%, rgba(155, 139, 100, 0.5) 40%, rgba(155, 139, 100, 0.5) 40%, rgba(35, 44, 73, 0.5) 75%, rgba(35, 44, 73, 0.5) 75%, rgba(11, 10, 43, 0.5));
+  /*linear-gradient(#AA9F89,#796A55,#342E25);*/
+
 }
 .play-main .main-head {
   height: 35px;
@@ -165,6 +165,15 @@ a {
   color: #fff;
   width: 83%;
   margin: 0 auto;
+}
+.play-main .main-head .my-info {
+  color: #333;
+  position: absolute;
+  right: 13px;
+  top: 64px;
+  padding: 3px;
+  font-size: 8px;
+  display: none;
 }
 .play-main .time-outline {
   position: absolute;
@@ -203,9 +212,9 @@ a {
   color: #fff;
 }
 .play-main .song-lyric {
-  width: 200px;
-  height: 150px;
-  margin: 0 auto;
+  width: 250px;
+  height: 100px;
+  margin: 40px auto 0 auto;
   position: relative;
   overflow: hidden;
 }
@@ -215,7 +224,7 @@ a {
   text-align: center;
 }
 .play-main .song-lyric .lyric li {
-  padding: 5px 0;
+  padding: 5px 0 2px 0;
   position: relative;
   text-align: center;
   color: rgba(255, 255, 255, 0.6);
@@ -223,7 +232,7 @@ a {
   transition: all 0.5s;
 }
 .play-main .song-lyric .lyric li.active {
-  font-size: 18px;
+  font-size: 13px;
   color: #ffffff;
 }
 .play-main .song-disc {
@@ -251,7 +260,7 @@ a {
   width: 40px;
   height: 40px;
   position: absolute;
-  bottom: 25%;
+  bottom: 26%;
   left: 50%;
   margin-left: -20px;
   margin-top: -20px;
