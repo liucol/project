@@ -64,7 +64,6 @@ var player = {
             }
         });
         $(".icon-yinliang").on("click",function(){
-            e.stopPropagation();
             $(".vol-ct").fadeToggle(500);
         })
         $this.typeMenu.on("click","li",function() {//选频道
