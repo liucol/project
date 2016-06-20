@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3d旋转</title>
+    <style>
+        .btn{
+            display: block;
+            width:150px;
+            height:50px;
+            line-height:50px;
+            text-align: center;
+            font-size: 26px;
+            text-decoration: none;
+            outline: none;
+            border-radius:6px;
+            float:left;
+            margin:10px;
+            cursor:pointer;
+            -webkit-transition: -webkit-box-shadow .3s;
+            -o-transition: box-shadow .3s;
+            -moz-transition: box-shadow .3s;
+            transition: box-shadow .3s;
+        }
+        .cube{
+            color: #fff;
+            background: #C8C8A9;
+            box-shadow: 0 0 0 -2px #CFF09E, 0 0 0 -1px #C8C8A9;
+        }
+        .show3D{
+            color:#fff;
+            background:#1CEED0;
+            box-shadow: 0 0 0 -2px #CFF09E, 0 0 0 -1px #C8C8A9;
+        }
+        .btn:hover,.btn:focus{
+            box-shadow: 0 0 0 2px #CFF09E, 0 0 0 4px #bebe99;
+        }
+        .btn:active{
+            background: #C6B27F;
+            box-shadow: 0 0 0 2px #CFF09E, 0 0 0 4px #C6B27F;
+        }
+    </style>
+</head>
+<body>
+<a class="btn cube" href="3dCube.html">3d旋转立方体</a>
+<a class="btn show3D" href="3dShow.html">3d旋转相册</a>
+</body>
+</html>
