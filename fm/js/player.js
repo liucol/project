@@ -64,7 +64,6 @@ var player = {
             $(".vol-ct").fadeToggle(500);
         })
         $this.typeMenu.on("click","li",function() {//选频道
-            e.stopPropagation();
             $(this).addClass("active").siblings().removeClass("active");
             curId = $(this).attr("data-id");
             $this.playing = false;
@@ -223,7 +222,7 @@ var player = {
     },
     showLyric : function(){
         var $this = this,
-            liH = $(".lyric li").eq(5).outerHeight()+3; //每行高度
+            liH = $(".lyric li").eq(5).outerHeight()-3; //每行高度
         for(var i=0;i< $this.lyricArr.length;i++){//遍历歌词下所有的li
             var curT = $(".lyric li").eq(i).attr("data-time");//获取当前li存入的当前一排歌词时间
             var nexT = $(".lyric li").eq(i+1).attr("data-time");
@@ -254,7 +253,6 @@ var drag = {
             $this.oldY = e.pageY;
         }).on("mouseup",function(e){
             $this.dragDiv.parent("#play").removeClass("onMove").removeData('newPos');
-
            if (($this.oldX - e.pageX == 0) && ($this.oldY - e.pageY == 0) && ($(this).parent().attr("id") === 'play')){
                $(".screen").slideToggle(500);
             }
