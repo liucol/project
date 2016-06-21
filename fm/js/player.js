@@ -49,9 +49,6 @@ var player = {
         $(".play-menu").on("mouseleave",function(){
             $(".play-menu").animate({left:'-111px'},500);
         });
-        $("#toggle").on("click",function(){
-            $(".screen").slideToggle(500);
-        });
         $(".disc-control").on("click",".icon",function(){
             if($(this).hasClass("icon-play")){
                 $(this).removeClass("icon-play").addClass("icon-pause");
@@ -240,37 +237,37 @@ var player = {
 
     }
 };
-var Drag = {
-    init : function(dragDiv){
-        this.dragDiv =dragDiv;
-        this.dragDiv.css('position','absolute');
+
+player.init($("#play"));
+var drag = {
+    init : function($node){
+        this.dragDiv = $node;
         this.bind();
     },
-    bind :function(){
-        $this = this;
+    bind : function(){
+        var $this = this;
         this.dragDiv.on("mousedown",function(e){
-            $this.dragDiv.css({
-                cursor:'move'
-            });
-            $this.dragging = true;
-            $this.dragDiv.X = e.pageX - $this.dragDiv.offset().left;
-            $this.dragDiv.Y = e.pageY - $this.dragDiv.offset().top;
-        });
-        this.dragDiv.on("mousemove",function(e){
-            if($this.dragging){
-                $this.dragDiv.css({
-                    left : e.pageX-$this.dragDiv.X,
-                    top : e.pageY-$this.dragDiv.Y
-                });//控件新位置
+            var posX = e.pageX - $this.dragDiv.offset().left,
+                posY = e.pageY - $this.dragDiv.offset().top;
+            $this.dragDiv.parent("#play").addClass("onMove").data('newPos',{X:posX,Y:posY});
+            $this.oldX = e.pageX;
+            $this.oldY = e.pageY;
+        }).on("mouseup",function(e){
+            $this.dragDiv.parent("#play").removeClass("onMove").removeData('newPos');
+
+           if (($this.oldX - e.pageX == 0) && ($this.oldY - e.pageY == 0) && ($(this).parent().attr("id") === 'play')){
+               $(".screen").slideToggle(500);
             }
         });
-        this.dragDiv.on("mouseup",function(e){
-            $this.dragDiv.css({
-                cursor:'default'
+        $('body').on("mousemove",function(e){
+            $('.onMove').length && $('.onMove').offset({
+                top: e.pageY - $('.onMove').data('newPos').Y,
+                left: e.pageX - $('.onMove').data('newPos').X
             });
-            $this.dragging = false;
-        });
+
+
+        })
     }
-};
-player.init($("#play"));
-Drag.init($('#play'));
+}
+
+drag.init($("#toggle"));

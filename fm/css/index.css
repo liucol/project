@@ -47,6 +47,34 @@ a {
   text-decoration: none;
   color: #333;
 }
+/*#toggle {
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 2px 2px 3px #ccc;
+    padding:10px 0;
+}
+#play{
+
+}
+.screen{
+    width:262px;
+    height:422px;
+    overflow:hidden;
+    position:relative;
+    display:none;
+}*/
+.screen {
+  width: 262px;
+  height: 422px;
+  overflow: hidden;
+  position: relative;
+  display: none;
+}
 #toggle {
   width: 30px;
   height: 30px;
@@ -56,16 +84,16 @@ a {
   border-radius: 5px;
   color: #fff;
   box-shadow: 2px 2px 3px #ccc;
+  padding: 10px;
+  position: relative;
 }
 #play {
-  position: relative;
+  position: absolute;
+  left: 10%;
+  top: 10%;
 }
-.screen {
-  width: 262px;
-  height: 422px;
-  overflow: hidden;
-  position: relative;
-  display: none;
+.onMove {
+  cursor: move;
 }
 .play-ct {
   margin-top: 10px;
