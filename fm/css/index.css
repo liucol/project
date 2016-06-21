@@ -409,3 +409,6 @@ a {
     transform: rotate(1turn);
   }
 }
+#frame {
+  display: none;
+}

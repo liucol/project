@@ -223,7 +223,7 @@ var player = {
     },
     showLyric : function(){
         var $this = this,
-            liH = $(".lyric li").eq(5).outerHeight(true); //每行高度
+            liH = $(".lyric li").eq(5).outerHeight()+3; //每行高度
         for(var i=0;i< $this.lyricArr.length;i++){//遍历歌词下所有的li
             var curT = $(".lyric li").eq(i).attr("data-time");//获取当前li存入的当前一排歌词时间
             var nexT = $(".lyric li").eq(i+1).attr("data-time");
