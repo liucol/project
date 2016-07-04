@@ -47,7 +47,7 @@ var player = {
             $(".play-menu").animate({left:0},500);
         });
         $(".play-menu").on("mouseleave",function(){
-            $(".play-menu").animate({left:'-111px'},500);
+            $(".play-menu").animate({left:'-113px'},500);
         });
         $(".disc-control").on("click",".icon",function(){
             if($(this).hasClass("icon-play")){
@@ -68,6 +68,8 @@ var player = {
             curId = $(this).attr("data-id");
             $this.playing = false;
             $this.getSong(curId);
+            $(this).removeClass("icon-play").addClass("icon-pause");
+            $(".disc-animation").removeClass("pause");
         });
         $('.time-outline').on('click',function(e){  //  点击 调节播放进度
             e.stopPropagation();
@@ -173,7 +175,7 @@ var player = {
         var $this = this;
         $.post('http://api.jirengu.com/fm/getLyric.php', {ssid: $this.data[0], sid: $this.data[1]})
             .done(function (lyr) {
-                var lyr = eval("(" + lyr + ")");
+                var lyr = JSON.parse(lyr);
                 //console.log(lyr);//如果不报错
                 if(!!lyr.lyric){
                     $this.ctLyric.empty();//先清空歌词内部
@@ -233,7 +235,6 @@ var player = {
                 $this.ctLyric.css('top', -liH*(i-2));
             }
         }
-
     }
 };
 
@@ -262,10 +263,8 @@ var drag = {
                 top: e.pageY - $('.onMove').data('newPos').Y,
                 left: e.pageX - $('.onMove').data('newPos').X
             });
-
-
         })
     }
-}
+};
 
 drag.init($("#toggle"));

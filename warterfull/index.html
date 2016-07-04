@@ -133,7 +133,8 @@ function isVisible($ele){//1.检查内容是否被读完
     }
     function place($nodeList){
         var $nodes = renderPlace($nodeList); //如何让节点生成html
-                waterFull($nodes);//节点生成完后加载瀑布流
+               waterFull($nodes);//节点生成完后加载瀑布流
+        //console.log($nodes);
     }
     function renderPlace($data){//数据渲染成html
         var html ="";
@@ -152,7 +153,7 @@ function isVisible($ele){//1.检查内容是否被读完
     var $winW = $('#pic-ct').width();
     var count = parseInt($winW/$itemW);
     var sumItemHeight = [];
-    console.log($itemW+'+'+$winW+'+'+count);
+    //console.log($itemW+'+'+$winW+'+'+count);
     for(var i = 0;i<count;i++){
         sumItemHeight.push(0);//取得原始第一列的横排top值
     }
@@ -166,6 +167,7 @@ function isVisible($ele){//1.检查内容是否被读完
                     if(minItemHeight > sumItemHeight[i]){
                         idx = i;
                         minItemHeight = sumItemHeight[i];
+                        console.log(minItemHeight+ '+' +  sumItemHeight);
                     }
                 }
                 $cur.css({
@@ -175,6 +177,7 @@ function isVisible($ele){//1.检查内容是否被读完
                 });
                 sumItemHeight[idx] = $cur.outerHeight(true) + sumItemHeight[idx];//放入一个盒子后更新高度值值和
                 $('#pic-ct').height(Math.max.apply(null,sumItemHeight));//这是js方法操作撑开item父容器的高度
+
             })
         });
     }
